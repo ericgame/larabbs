@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\EnsureEmailIsVerified::class, //對於已經登入但是email未驗證的會員，顯示email未驗證訊息
+            \App\Http\Middleware\RecordLastActivedTime::class, //記錄會員最後登入時間(最後活躍時間)
         ],
 
         'api' => [

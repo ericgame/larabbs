@@ -12,6 +12,7 @@ use Auth;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use MustVerifyEmailTrait;
+    use Traits\LastActivedAtHelper;
 
     // use Notifiable;
     use Notifiable{
@@ -39,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'introduction', 'avatar',
     ];
 
     /**
@@ -59,4 +60,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
 }

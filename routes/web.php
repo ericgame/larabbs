@@ -43,6 +43,12 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+//個人中心、編輯資料
+/*
+| GET|HEAD  | users/{user}      | users.show   | App\Http\Controllers\UsersController@show   | web
+| PUT|PATCH | users/{user}      | users.update | App\Http\Controllers\UsersController@update | web
+| GET|HEAD  | users/{user}/edit | users.edit   | App\Http\Controllers\UsersController@edit   | web
+*/
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
@@ -59,6 +65,7 @@ Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
 
 /*
 Route::get('', '')->name('');
