@@ -51,17 +51,41 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 */
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
+/*
+| GET|HEAD  | topics | topics.index | App\Http\Controllers\TopicsController@index | web
+| POST      | topics | topics.store | App\Http\Controllers\TopicsController@store | web
+| GET|HEAD  | topics/create | topics.create | App\Http\Controllers\TopicsController@create | web
+| PUT|PATCH | topics/{topic} | topics.update | App\Http\Controllers\TopicsController@update | web
+| DELETE    | topics/{topic} | topics.destroy | App\Http\Controllers\TopicsController@destroy | web
+| GET|HEAD  | topics/{topic}/edit | topics.edit | App\Http\Controllers\TopicsController@edit | web
+*/
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 
+/*
+| GET|HEAD | categories/{category} | categories.show | App\Http\Controllers\CategoriesController@show | web
+*/
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
-Route::get('topics/{topic}/{slug?}', 'TopicsCntroller@show')->name('topics.show');
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 
+/*
+| POST      | replies | replies.store | App\Http\Controllers\RepliesController@store | web
+| GET|HEAD  | replies | replies.index | App\Http\Controllers\RepliesController@index | web
+| GET|HEAD  | replies/create | replies.create | App\Http\Controllers\RepliesController@create | web
+| DELETE    | replies/{reply} | replies.destroy | App\Http\Controllers\RepliesController@destroy | web
+| PUT|PATCH | replies/{reply} | replies.update | App\Http\Controllers\RepliesController@update | web
+| GET|HEAD  | replies/{reply} | replies.show | App\Http\Controllers\RepliesController@show | web
+| GET|HEAD  | replies/{reply}/edit | replies.edit | App\Http\Controllers\RepliesController@edit | web
+*/
 Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
 
+/*
+| GET|HEAD | notifications | notifications.index | App\Http\Controllers\NotificationsController@index | web
+*/
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
