@@ -15,6 +15,7 @@
         "mews/captcha": "~3.0",
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "~1.1",
+        "spatie/laravel-permission": "^3.17",
         "summerblue/administrator": "6.*",
         "summerblue/laravel-active": "6.*",
         "viacreative/sudo-su": "^1.1"
@@ -26,7 +27,8 @@
         "laravel/ui": "^1.2",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "summerblue/generator": "6.*"
     },
     "config": {
         "optimize-autoloader": true,
